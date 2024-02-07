@@ -15,7 +15,7 @@ public class Lab1 {
 		  }
 		  else
 		  {
-			  for(int i = 0; i < n; i++)
+			  for(int i = 0; i <= n; i++)
 			  {
 				  answer += i * i;
 			  }
@@ -33,14 +33,15 @@ public class Lab1 {
 	*/
 	   public static int maxIndex(int array[],int len)
 	   {
-		   int answer = array[0];
-		   int answerI = 0;
-		   if(len <= 0)
+		   int result = 0;
+		   if(len <= 0 || array == null)
 		   {
 			   return -1;
 		   }
 		   else
 		   {
+			   int answer = array[0];
+			   int answerI = 0;
 			   for (int i = 0; i < len; i++)
 			   {
 				   if (array[i] > answer)
@@ -49,9 +50,10 @@ public class Lab1 {
 					   answer = array[i];	
 				   }
 			   }
+			   result = answerI;
 		   }
         
-	      return answerI;
+	      return result;
 	   }
 
 	/**
@@ -88,7 +90,8 @@ public class Lab1 {
 	   public static int fib(int n)
 	   {
 		   int answer = 0;
-		   int other = 1;
+		   int other = 0;
+		   int holder = 0;
 		   if (n <= 0)
 		   {
 			   return 0;
@@ -97,7 +100,16 @@ public class Lab1 {
 		   {
 			   for (int i = 0; i < n; i++)
 			   {
-				   answer += answer + 1;
+				   if (i == 0)
+				   {
+					   answer = 1;
+				   }
+				   else
+				   {
+				       holder = answer;
+				       answer += other;
+				       other = holder;
+				   }
 			   }
 		   }
 	      return answer;
